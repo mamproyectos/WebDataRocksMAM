@@ -14,6 +14,20 @@
 <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
 </head>
 <body>
+
+<div id="wdr-component">The component will appear here</div>
+<script>
+    var pivot = new WebDataRocks({
+        container: "#wdr-component",
+        toolbar: true,
+        report: {
+            dataSource: {
+                filename: "https://cdn.webdatarocks.com/data/data.csv"
+            }
+        }
+    });
+</script>
+
   <app-root></app-root>
 </body>
 </html>
