@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="utf-8">
   <title>WebDataRocksMAM</title>
@@ -9,27 +10,87 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-<link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet"/>
-<script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
-<script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
+  <link href="https://cdn.webdatarocks.com/latest/webdatarocks.min.css" rel="stylesheet" />
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.toolbar.min.js"></script>
+  <script src="https://cdn.webdatarocks.com/latest/webdatarocks.js"></script>
 </head>
+
 <body>
-
-<div id="wdr-component">The component will appear here</div>
-<script>
+  <div id="wdr-component">The component will appear here</div>
+  <script>
     var pivot = new WebDataRocks({
-        container: "#wdr-component",
-        toolbar: true,
-        report: {
-            dataSource: {
-                filename: "https://cdn.webdatarocks.com/data/data.csv"
-                // Da error CORS
-                // filename: "../src/assets/gastos.csv"
-            }
-        }
-    });
-</script>
+      container: "#wdr-component",
+      beforetoolbarcreated: customizeToolbar,
+      toolbar: true,
+      report: {
+        dataSource: {
+          dataSourceType: "csv",
+          fieldSeparator: ";",
+          filename: "https://mamjerez.fra1.digitaloceanspaces.com/gastos+.csv"
+        },
 
-  <app-root></app-root>
+        // "localization": "https://cdn.webdatarocks.com/loc/es.json",
+        // No funciona en local
+        // "localization": "../src/assets/es.json",
+        // localization: "https://mamjerez.fra1.digitaloceanspaces.com/es.json",
+
+        slice: {
+          rows: [
+            {
+              uniqueName: "Descripción"
+            }
+          ],
+          columns: [
+            {
+              uniqueName: "Measures",
+              format: "mam"
+            }
+          ],
+          measures: [
+            {
+              uniqueName: "Créditos Iniciales",
+              caption: "Creditos",
+              aggregation: "sum",
+              format: "mam"
+            }
+          ],
+          sorting: {
+            column: {
+              type: "desc",
+              tuple: [],
+              measure: "Créditos Iniciales"
+            }
+          }
+        },
+        formats: [{
+          name: "mam",
+          thousandsSeparator: ".",
+          decimalSeparator: ",",
+          decimalPlaces: 0,
+          currencySymbol: "",
+          currencySymbolAlign: "right",
+          nullValue: "",
+          textAlign: "right",
+          isPercent: false
+        }]
+      }
+    }
+    );
+
+    function customizeToolbar(toolbar) {
+      var tabs = toolbar.getTabs(); // get all tabs from the toolbar
+      toolbar.getTabs = function () {
+        delete tabs[0]; // delete the first tab
+        delete tabs[1];
+        delete tabs[2];
+        // delete tabs[4];
+        // delete tabs[5];
+        // delete tabs[6];
+        return tabs;
+      }
+    }
+  </script>
+  <!-- <app-root></app-root> -->
 </body>
+
 </html>
