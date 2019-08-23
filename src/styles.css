@@ -1,3 +1,14 @@
 #wdr-component{
   height: 100% !Important
 }
+
+
+.cabecera {
+  background-color: #fafafa;
+  font-size: 16px;
+  margin: 6px;
+  padding: 6px;
+  border: 2px solid #ccc;
+  /* IMPORTANTE */
+  text-align: center;
+}
