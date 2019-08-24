@@ -17,13 +17,10 @@
   <!-- Cambiar tema. -->
   <!-- <link href="https://cdn.webdatarocks.com/latest/theme/lightblue/webdatarocks.min.css" rel="stylesheet" /> -->
 
-<!-- Bootstrap -->
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
-
-
 
 <body>
   <div class=container-fluid>
@@ -45,9 +42,16 @@
       </a>
     </nav>
 
-    <table><tr><td style="width: 800px;"><div id="wdr-component"></div></td>
-      <td><div id="googlechart-container" style="width:750px;height:550px;"></div></td></tr></table>
-
+    <table>
+      <tr>
+        <td style="width: 800px;">
+          <div id="wdr-component"></div>
+        </td>
+        <td>
+          <div id="googlechart-container" style="width:750px;height:550px;"></div>
+        </td>
+      </tr>
+    </table>
 
     <!-- <div id="wdr-component">The component will appear here</div> -->
     <script>
@@ -104,24 +108,24 @@
                 measure: "Créditos Iniciales"
               }
             },
-        //     expands: {
-        //     rows: [
-        //         {
-        //             tuple: [
-        //                 "Capítulo.1"
-        //             ]
-        //         },
-        //         {
-        //             tuple: [
-        //                 "Capítulo.1",
-        //                 "Capítulo (Capitulos).Gastos de personal"
-        //             ]
-        //         }
-        //     ]
-        // },
+            //     expands: {
+            //     rows: [
+            //         {
+            //             tuple: [
+            //                 "Capítulo.1"
+            //             ]
+            //         },
+            //         {
+            //             tuple: [
+            //                 "Capítulo.1",
+            //                 "Capítulo (Capitulos).Gastos de personal"
+            //             ]
+            //         }
+            //     ]
+            // },
             drills: {
-            drillAll: false
-        }
+              drillAll: false
+            }
           },
 
           // Fuera del slice.
@@ -175,9 +179,6 @@
     </script>
     <app-root></app-root>
 </body>
-
-
-
 </div>
 
 </html>
