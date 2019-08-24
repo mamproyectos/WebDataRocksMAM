@@ -12,7 +12,7 @@ export class AppComponent {
   @ViewChild('pivot1', { static: false }) child: WebDataRocksPivot;
 
   public pivotReport = {
-    // beforetoolbarcreated: this.customizeToolbar,
+    beforetoolbarcreated: this.customizeToolbar,
     dataSource: {
       dataSourceType: 'csv',
       fieldSeparator: ';',
@@ -115,9 +115,11 @@ export class AppComponent {
 
   };
 
-  onCustomizeToolbar(toolbar) {
+
+   customizeToolbar(toolbar) {
     const tabs = toolbar.getTabs(); // get all tabs from the toolbar
-    toolbar.getTabs = () => {
+    toolbar.getTabs = function() {
+      console.log('customizeToolbar');
       delete tabs[0]; // delete the first tab
       delete tabs[1];
       // delete tabs[2];
@@ -143,3 +145,5 @@ export class AppComponent {
   }
 
 }
+
+
